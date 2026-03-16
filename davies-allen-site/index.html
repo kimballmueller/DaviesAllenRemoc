@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Davies + Allen | CPA Firm Utah — Tax Planning, Accounting & Advisory</title>
+  <meta name="description" content="Davies + Allen is Utah's relationship-first CPA firm. Proactive tax planning, outsourced accounting, and business advisory across 5 Utah locations: Orem, Murray, Heber City, Fillmore, and Lehi.">
+  <meta name="keywords" content="CPA firm Utah, accounting firm Utah, tax planning Orem, outsourced accounting Utah, CPA Heber City, tax advisor Utah, bookkeeping Utah, business advisory Utah">
+  <meta property="og:title" content="Davies + Allen | CPA Firm Utah">
+  <meta property="og:description" content="Utah's relationship-first accounting firm. Proactive tax planning, bookkeeping, and advisory across 5 Utah locations.">
+  <meta property="og:url" content="https://daviesallen.com">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://daviesallen.com">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            orange: '#FF6900',
+            'orange-dark': '#CC5400',
+            'orange-glow': 'rgba(255,105,0,0.12)',
+            ink: '#0A0A0A',
+            'ink-mid': '#161616',
+            'ink-soft': '#242424',
+            stone: '#F5F4F2',
+            'stone-mid': '#E8E6E1',
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #F5F4F2; color: #0A0A0A; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    /* ---- Scroll Reveal ---- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1), transform 0.75s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* ---- Hero ---- */
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      opacity: 0;
+      transition: opacity 1.4s ease-in-out;
+      will-change: opacity;
+    }
+    .hero-bg.active { opacity: 1; }
+
+    /* ---- Nav ---- */
+    #main-nav { transition: background 0.35s ease, backdrop-filter 0.35s ease; }
+    #main-nav.scrolled { background: rgba(10,10,10,0.96); backdrop-filter: blur(12px); }
+
+    /* ---- Section label ---- */
+    .label-line {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    }
+    .label-line::before {
+      content: ''; display: block; width: 20px; height: 1.5px; background: #FF6900; flex-shrink: 0;
+    }
+
+    /* ---- Orange line on service cards ---- */
+    .svc-card { position: relative; overflow: hidden; }
+    .svc-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: #FF6900; transform: scaleX(0); transform-origin: left;
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+    .svc-card:hover::after { transform: scaleX(1); }
+
+    /* ---- Buttons ---- */
+    .btn-primary {
+      display: inline-block; background: #FF6900; color: #fff;
+      padding: 14px 32px; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { background: #CC5400; transform: translateY(-1px); box-shadow: 0 10px 28px rgba(255,105,0,0.28); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-ghost {
+      display: inline-block; border: 1.5px solid rgba(255,255,255,0.25); color: #fff;
+      padding: 13px 32px; font-size: 12px; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: #FF6900; color: #FF6900; }
+
+    /* ---- Team ---- */
+    .team-overlay { opacity: 0; transition: opacity 0.3s ease; }
+    .team-card:hover .team-overlay { opacity: 1; }
+    .team-card img { transition: transform 0.5s cubic-bezier(0.22,1,0.36,1); }
+    .team-card:hover img { transform: scale(1.06); }
+
+    /* ---- Location cards ---- */
+    .loc-card {
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .loc-card:hover { border-color: #FF6900; transform: translateY(-3px); }
+
+    /* ---- Portal cards ---- */
+    .portal-card { transition: transform 0.3s, box-shadow 0.3s; }
+    .portal-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.35); }
+
+    /* ---- Form ---- */
+    .form-field {
+      width: 100%; background: #161616; border: 1px solid rgba(255,255,255,0.09);
+      color: #fff; font-size: 14px; padding: 13px 16px;
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+      font-family: 'Inter', sans-serif; appearance: none;
+    }
+    .form-field::placeholder { color: rgba(255,255,255,0.2); }
+    .form-field:focus { border-color: #FF6900; box-shadow: 0 0 0 3px rgba(255,105,0,0.1); }
+    .form-label { display: block; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 7px; }
+
+    /* ---- Testimonials ---- */
+    .testi-slide { display: none; }
+    .testi-slide.active { display: block; animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ---- Scrollbar ---- */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0A0A0A; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: #FF6900; }
+
+    /* ---- Stat numbers ---- */
+    .stat-num { font-feature-settings: 'tnum'; }
+
+    /* ---- Noise texture overlay ---- */
+    .noise::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="main-nav" class="fixed top-0 left-0 right-0 z-50 px-6 lg:px-10 py-5">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <a href="#" class="flex-shrink-0">
+      <img src="https://daviesallen.com/wp-content/themes/davies/img/logo.svg" alt="Davies + Allen" class="h-7 brightness-0 invert" onerror="this.parentElement.innerHTML='<span class=\'font-display text-white text-xl font-light\'>Davies <span class=\'text-orange\'>+</span> Allen</span>'">
+    </a>
+    <div class="hidden md:flex items-center gap-7 lg:gap-9">
+      <a href="#about" class="text-white/60 hover:text-white text-xs font-medium tracking-wide transition-colors">Who We Are</a>
+      <a href="#services" class="text-white/60 hover:text-white text-xs font-medium tracking-wide transition-colors">What We Do</a>
+      <a href="#testimonials" class="text-white/60 hover:text-white text-xs font-medium tracking-wide transition-colors">Testimonials</a>
+      <a href="#tools" class="text-white/60 hover:text-white text-xs font-medium tracking-wide transition-colors">Our Tools</a>
+      <a href="#locations" class="text-white/60 hover:text-white text-xs font-medium tracking-wide transition-colors">Locations</a>
+      <a href="#contact" class="btn-primary text-xs ml-2">Get Started</a>
+    </div>
+    <button id="mobile-btn" class="md:hidden p-2 text-white" aria-label="Menu">
+      <svg id="menu-icon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M3.75 17.25h16.5"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-white/10 pt-4">
+    <div class="flex flex-col gap-5">
+      <a href="#about" class="text-white/60 hover:text-white text-sm font-medium transition-colors mobile-link">Who We Are</a>
+      <a href="#services" class="text-white/60 hover:text-white text-sm font-medium transition-colors mobile-link">What We Do</a>
+      <a href="#testimonials" class="text-white/60 hover:text-white text-sm font-medium transition-colors mobile-link">Testimonials</a>
+      <a href="#tools" class="text-white/60 hover:text-white text-sm font-medium transition-colors mobile-link">Our Tools</a>
+      <a href="#locations" class="text-white/60 hover:text-white text-sm font-medium transition-colors mobile-link">Locations</a>
+      <a href="#contact" class="btn-primary self-start mobile-link">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ===== HERO ===== -->
+<section class="relative h-screen min-h-[680px] flex items-center overflow-hidden bg-ink">
+  <div class="hero-bg active" style="background-image:url('https://daviesallen.com/wp-content/uploads/2020/10/img_hero_01.jpg')"></div>
+  <div class="hero-bg" style="background-image:url('https://daviesallen.com/wp-content/uploads/2020/10/img_hero_02.jpg')"></div>
+  <div class="hero-bg" style="background-image:url('https://daviesallen.com/wp-content/uploads/2020/10/img_hero_03.jpg')"></div>
+  <div class="hero-bg" style="background-image:url('https://daviesallen.com/wp-content/uploads/2020/10/img_hero_04.jpg')"></div>
+
+  <!-- Overlays -->
+  <div class="absolute inset-0 bg-gradient-to-r from-ink/92 via-ink/65 to-ink/20"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 w-full pt-20">
+    <div class="max-w-2xl">
+      <p class="label-line text-white/40 mb-8">Utah CPA Firm &mdash; 5 Locations</p>
+      <h1 class="font-display text-[64px] sm:text-[80px] lg:text-[96px] text-white font-light leading-[0.92] tracking-[-0.03em] mb-7">
+        We count<br>
+        <em class="not-italic text-orange">people</em> first.
+      </h1>
+      <p class="text-white/60 text-lg font-light leading-[1.75] mb-10 max-w-xl">
+        Davies + Allen is a CPA firm built around relationships — not transactions. Proactive tax planning, outsourced accounting, and business advisory for Utah businesses ready to grow.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#contact" class="btn-primary">Schedule a Free Consultation</a>
+        <a href="#services" class="btn-ghost">See What We Do</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide indicators -->
+  <div class="absolute bottom-10 right-8 flex gap-2.5 z-10">
+    <button class="hero-dot h-0.5 w-7 bg-orange transition-all duration-300" data-i="0"></button>
+    <button class="hero-dot h-0.5 w-2.5 bg-white/25 hover:bg-white/50 transition-all duration-300" data-i="1"></button>
+    <button class="hero-dot h-0.5 w-2.5 bg-white/25 hover:bg-white/50 transition-all duration-300" data-i="2"></button>
+    <button class="hero-dot h-0.5 w-2.5 bg-white/25 hover:bg-white/50 transition-all duration-300" data-i="3"></button>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
+    <div class="w-px h-10 bg-gradient-to-b from-white/30 to-transparent animate-bounce"></div>
+  </div>
+</section>
+
+
+<!-- ===== TRUST BAR ===== -->
+<section class="bg-ink border-b border-white/[0.07] py-12">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
+      <div class="reveal">
+        <p class="stat-num font-display text-[42px] text-white font-light leading-none">
+          <span class="counter" data-target="20">0</span><span class="text-orange">+</span>
+        </p>
+        <p class="text-white/35 text-xs font-semibold tracking-widest uppercase mt-2">Years in Business</p>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p class="stat-num font-display text-[42px] text-white font-light leading-none">
+          <span class="counter" data-target="5">0</span>
+        </p>
+        <p class="text-white/35 text-xs font-semibold tracking-widest uppercase mt-2">Utah <span class="text-orange">Offices</span></p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <p class="stat-num font-display text-[42px] text-white font-light leading-none">
+          <span class="counter" data-target="1000">0</span><span class="text-orange">+</span>
+        </p>
+        <p class="text-white/35 text-xs font-semibold tracking-widest uppercase mt-2">Clients Served</p>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <p class="font-display text-[42px] text-white font-light leading-none"><span class="text-orange">Local.</span></p>
+        <p class="text-white/35 text-xs font-semibold tracking-widest uppercase mt-2">Utah Roots</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="bg-stone py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="mb-16 reveal">
+      <p class="label-line text-ink/40 mb-5">What We Do</p>
+      <h2 class="font-display text-[52px] md:text-[64px] text-ink font-light tracking-[-0.03em] leading-[0.95]">
+        Accounting that works<br><em>for your business</em>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-stone-mid">
+
+      <div class="svc-card bg-white p-10 group cursor-pointer reveal">
+        <div class="w-9 h-9 mb-9 text-orange">
+          <svg fill="none" stroke="currentColor" stroke-width="1.25" viewBox="0 0 36 36">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 29V11l11-7 11 7v18H7z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 29v-7h10v7"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-[22px] text-ink font-semibold leading-snug mb-4 group-hover:text-orange transition-colors duration-200">Proactive Tax Planning</h3>
+        <p class="text-ink/50 text-sm leading-[1.75]">We strategize during the year to shape your financial outcomes — not react after the deadline. Tax planning as a year-round discipline.</p>
+        <p class="mt-6 text-orange text-[11px] font-semibold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">Learn More →</p>
+      </div>
+
+      <div class="svc-card bg-white p-10 group cursor-pointer reveal reveal-delay-1">
+        <div class="w-9 h-9 mb-9 text-orange">
+          <svg fill="none" stroke="currentColor" stroke-width="1.25" viewBox="0 0 36 36">
+            <rect x="5" y="9" width="26" height="20" rx="1" stroke-linecap="round"/>
+            <path stroke-linecap="round" d="M5 15h26M12 9V5M24 9V5M11 21h6M11 26h10"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-[22px] text-ink font-semibold leading-snug mb-4 group-hover:text-orange transition-colors duration-200">Outsourced Accounting</h3>
+        <p class="text-ink/50 text-sm leading-[1.75]">Bookkeeping, controller, and CFO services using modern technology. Get a full finance team without the overhead.</p>
+        <p class="mt-6 text-orange text-[11px] font-semibold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">Learn More →</p>
+      </div>
+
+      <div class="svc-card bg-white p-10 group cursor-pointer reveal reveal-delay-2">
+        <div class="w-9 h-9 mb-9 text-orange">
+          <svg fill="none" stroke="currentColor" stroke-width="1.25" viewBox="0 0 36 36">
+            <circle cx="18" cy="18" r="13" stroke-linecap="round"/>
+            <path stroke-linecap="round" d="M18 11v7l5 3.5"/>
+            <path stroke-linecap="round" d="M9 18h4M23 18h4M18 9v3M18 24v3"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-[22px] text-ink font-semibold leading-snug mb-4 group-hover:text-orange transition-colors duration-200">Business Advisory</h3>
+        <p class="text-ink/50 text-sm leading-[1.75]">Startup, growth, profitability, succession planning, and acquisitions. We sit across the table as a real strategic partner.</p>
+        <p class="mt-6 text-orange text-[11px] font-semibold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">Learn More →</p>
+      </div>
+
+      <div class="svc-card bg-white p-10 group cursor-pointer reveal reveal-delay-3">
+        <div class="w-9 h-9 mb-9 text-orange">
+          <svg fill="none" stroke="currentColor" stroke-width="1.25" viewBox="0 0 36 36">
+            <rect x="5" y="5" width="26" height="26" rx="1"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 29l7-9 5 5.5 5-7.5 4 11"/>
+          </svg>
+        </div>
+        <h3 class="font-display text-[22px] text-ink font-semibold leading-snug mb-4 group-hover:text-orange transition-colors duration-200">Other Services</h3>
+        <p class="text-ink/50 text-sm leading-[1.75]">Audited & reviewed financial statements, 401(k) TPA, S-Corp payroll, and internal control planning.</p>
+        <p class="mt-6 text-orange text-[11px] font-semibold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-200">Learn More →</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== WHY SECTION ===== -->
+<section class="relative bg-ink noise py-24 overflow-hidden">
+  <!-- Radial glow -->
+  <div class="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full bg-orange/5 blur-[120px] pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+
+      <div class="reveal">
+        <p class="label-line text-white/35 mb-7">Why Davies + Allen</p>
+        <h2 class="font-display text-[52px] md:text-[64px] text-white font-light tracking-[-0.03em] leading-[0.95] mb-8">
+          Your accountants<br>should know<br><em class="text-orange">your name.</em>
+        </h2>
+        <p class="text-white/50 leading-[1.8] mb-10 max-w-md">Most firms focus on transactions. We focus on people. Every engagement starts with your goals — and we stay in contact all year, not just at tax time.</p>
+        <a href="#contact" class="btn-primary">Start a Conversation</a>
+      </div>
+
+      <div class="space-y-7">
+        <div class="reveal reveal-delay-1 flex gap-5 items-start">
+          <div class="w-10 h-10 flex-shrink-0 bg-orange/10 flex items-center justify-center">
+            <div class="w-2.5 h-2.5 bg-orange rotate-45"></div>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold text-sm mb-1.5">Proactive, not reactive</h3>
+            <p class="text-white/40 text-sm leading-[1.75]">We reach out before deadlines, not after. Year-round planning means fewer surprises and better outcomes for your business.</p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2 flex gap-5 items-start">
+          <div class="w-10 h-10 flex-shrink-0 bg-orange/10 flex items-center justify-center">
+            <div class="w-2.5 h-2.5 bg-orange rotate-45"></div>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold text-sm mb-1.5">One team, all your needs</h3>
+            <p class="text-white/40 text-sm leading-[1.75]">Tax, bookkeeping, payroll, and advisory — all under one roof. No hand-offs, no gaps, no confusion about who handles what.</p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-3 flex gap-5 items-start">
+          <div class="w-10 h-10 flex-shrink-0 bg-orange/10 flex items-center justify-center">
+            <div class="w-2.5 h-2.5 bg-orange rotate-45"></div>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold text-sm mb-1.5">Utah roots, local expertise</h3>
+            <p class="text-white/40 text-sm leading-[1.75]">Five offices, deep community ties, and a team that understands the Utah business landscape from the ground up.</p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-4 flex gap-5 items-start">
+          <div class="w-10 h-10 flex-shrink-0 bg-orange/10 flex items-center justify-center">
+            <div class="w-2.5 h-2.5 bg-orange rotate-45"></div>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold text-sm mb-1.5">Modern tools, personal service</h3>
+            <p class="text-white/40 text-sm leading-[1.75]">We use the best accounting technology available — but you always have a real person to call when it matters most.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== TEAM ===== -->
+<section id="about" class="bg-stone py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="mb-16 reveal">
+      <p class="label-line text-ink/40 mb-5">Who We Are</p>
+      <h2 class="font-display text-[52px] md:text-[64px] text-ink font-light tracking-[-0.03em] leading-[0.95]">
+        Meet the partners
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+
+      <div class="team-card reveal cursor-pointer group">
+        <div class="relative overflow-hidden aspect-[3/4] bg-ink-soft">
+          <img src="https://placehold.co/300x400/161616/242424?text=DB" alt="Dustin Barnhurst" class="w-full h-full object-cover">
+          <div class="team-overlay absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent flex flex-col justify-end p-5">
+            <p class="text-white/70 text-xs leading-relaxed">BS Accounting, MBA, MAcc. Tax strategy for growing businesses.</p>
+          </div>
+        </div>
+        <div class="pt-4">
+          <h3 class="text-ink text-sm font-semibold">Dustin Barnhurst</h3>
+          <p class="text-orange text-[11px] font-medium tracking-wide mt-0.5">Tax Partner</p>
+        </div>
+      </div>
+
+      <div class="team-card reveal reveal-delay-1 cursor-pointer group">
+        <div class="relative overflow-hidden aspect-[3/4] bg-ink-soft">
+          <img src="https://placehold.co/300x400/161616/242424?text=JD" alt="J.W. Davies" class="w-full h-full object-cover">
+          <div class="team-overlay absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent flex flex-col justify-end p-5">
+            <p class="text-white/70 text-xs leading-relaxed">Co-founder. Expert in medicine, real estate, and professional services taxation.</p>
+          </div>
+        </div>
+        <div class="pt-4">
+          <h3 class="text-ink text-sm font-semibold">J.W. Davies</h3>
+          <p class="text-orange text-[11px] font-medium tracking-wide mt-0.5">Co-Founder & Tax Partner</p>
+        </div>
+      </div>
+
+      <div class="team-card reveal reveal-delay-2 cursor-pointer group">
+        <div class="relative overflow-hidden aspect-[3/4] bg-ink-soft">
+          <img src="https://placehold.co/300x400/161616/242424?text=BA" alt="Brad Allen" class="w-full h-full object-cover">
+          <div class="team-overlay absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent flex flex-col justify-end p-5">
+            <p class="text-white/70 text-xs leading-relaxed">Co-founder. Deep passion for tax, outsourced CFO, and proactive planning.</p>
+          </div>
+        </div>
+        <div class="pt-4">
+          <h3 class="text-ink text-sm font-semibold">Brad Allen</h3>
+          <p class="text-orange text-[11px] font-medium tracking-wide mt-0.5">Co-Founder & Tax Partner</p>
+        </div>
+      </div>
+
+      <div class="team-card reveal reveal-delay-3 cursor-pointer group">
+        <div class="relative overflow-hidden aspect-[3/4] bg-ink-soft">
+          <img src="https://placehold.co/300x400/161616/242424?text=WB" alt="Will Bryan" class="w-full h-full object-cover">
+          <div class="team-overlay absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent flex flex-col justify-end p-5">
+            <p class="text-white/70 text-xs leading-relaxed">Small business specialist in manufacturing and construction.</p>
+          </div>
+        </div>
+        <div class="pt-4">
+          <h3 class="text-ink text-sm font-semibold">Will Bryan</h3>
+          <p class="text-orange text-[11px] font-medium tracking-wide mt-0.5">Tax Partner</p>
+        </div>
+      </div>
+
+      <div class="team-card reveal reveal-delay-4 cursor-pointer group">
+        <div class="relative overflow-hidden aspect-[3/4] bg-ink-soft">
+          <img src="https://placehold.co/300x400/161616/242424?text=WD" alt="Wendy Dalton" class="w-full h-full object-cover">
+          <div class="team-overlay absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent flex flex-col justify-end p-5">
+            <p class="text-white/70 text-xs leading-relaxed">Client experience manager. The heart of the D+A relationship model.</p>
+          </div>
+        </div>
+        <div class="pt-4">
+          <h3 class="text-ink text-sm font-semibold">Wendy Dalton</h3>
+          <p class="text-orange text-[11px] font-medium tracking-wide mt-0.5">Administrative Partner</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials" class="bg-ink py-24 relative overflow-hidden">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-orange/4 blur-[140px] pointer-events-none"></div>
+  <div class="relative z-10 max-w-4xl mx-auto px-6 lg:px-10 text-center">
+    <div class="reveal mb-16">
+      <p class="label-line text-white/35 mb-5 justify-center">Testimonials</p>
+      <h2 class="font-display text-[52px] md:text-[64px] text-white font-light tracking-[-0.03em] leading-[0.95]">
+        What clients say
+      </h2>
+    </div>
+
+    <div class="min-h-[260px]">
+      <div class="testi-slide active">
+        <div class="font-display text-5xl text-orange leading-none mb-6">&ldquo;</div>
+        <p class="font-display text-2xl md:text-3xl text-white font-light leading-[1.4] italic mb-8 max-w-3xl mx-auto">
+          Davies + Allen doesn't just do our taxes — they're a real business partner. They've saved us thousands through proactive planning we never would have found on our own.
+        </p>
+        <div class="w-10 h-px bg-orange mx-auto mb-5"></div>
+        <p class="text-white/35 text-xs font-semibold tracking-widest uppercase">Utah Business Owner</p>
+      </div>
+      <div class="testi-slide">
+        <div class="font-display text-5xl text-orange leading-none mb-6">&ldquo;</div>
+        <p class="font-display text-2xl md:text-3xl text-white font-light leading-[1.4] italic mb-8 max-w-3xl mx-auto">
+          The outsourced CFO service was a game changer. I finally have financial clarity and can make real decisions — not guesses.
+        </p>
+        <div class="w-10 h-px bg-orange mx-auto mb-5"></div>
+        <p class="text-white/35 text-xs font-semibold tracking-widest uppercase">Entrepreneur, Orem UT</p>
+      </div>
+      <div class="testi-slide">
+        <div class="font-display text-5xl text-orange leading-none mb-6">&ldquo;</div>
+        <p class="font-display text-2xl md:text-3xl text-white font-light leading-[1.4] italic mb-8 max-w-3xl mx-auto">
+          I've worked with several accounting firms. None of them called me proactively. Davies + Allen checks in year-round. That alone is worth everything.
+        </p>
+        <div class="w-10 h-px bg-orange mx-auto mb-5"></div>
+        <p class="text-white/35 text-xs font-semibold tracking-widest uppercase">Medical Practice Owner</p>
+      </div>
+    </div>
+
+    <div class="flex justify-center gap-3 mt-10">
+      <button class="testi-dot h-0.5 w-8 bg-orange" data-i="0"></button>
+      <button class="testi-dot h-0.5 w-8 bg-white/15 hover:bg-white/35 transition-colors" data-i="1"></button>
+      <button class="testi-dot h-0.5 w-8 bg-white/15 hover:bg-white/35 transition-colors" data-i="2"></button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== LOCATIONS ===== -->
+<section id="locations" class="bg-ink-mid py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="mb-16 reveal">
+      <p class="label-line text-white/35 mb-5">Find Us</p>
+      <h2 class="font-display text-[52px] md:text-[64px] text-white font-light tracking-[-0.03em] leading-[0.95]">
+        5 locations<br><em class="text-orange">across Utah</em>
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+
+      <div class="loc-card bg-ink-soft p-8 reveal">
+        <svg class="w-5 h-5 text-orange mb-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <h3 class="text-white font-semibold text-sm mb-3">Orem</h3>
+        <p class="text-white/35 text-xs leading-relaxed mb-4">920 E 800 N, Ste 204<br>Orem, UT 84097</p>
+        <a href="tel:8012255854" class="text-orange text-xs font-medium hover:text-orange-dark transition-colors">(801) 225-5854</a>
+      </div>
+
+      <div class="loc-card bg-ink-soft p-8 reveal reveal-delay-1">
+        <svg class="w-5 h-5 text-orange mb-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <h3 class="text-white font-semibold text-sm mb-3">Murray</h3>
+        <p class="text-white/35 text-xs leading-relaxed mb-4">5295 Commerce Dr, Ste 250<br>Murray, UT 84107</p>
+        <a href="tel:8019309401" class="text-orange text-xs font-medium hover:text-orange-dark transition-colors">(801) 930-9401</a>
+      </div>
+
+      <div class="loc-card bg-ink-soft p-8 reveal reveal-delay-2">
+        <svg class="w-5 h-5 text-orange mb-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <h3 class="text-white font-semibold text-sm mb-3">Heber City</h3>
+        <p class="text-white/35 text-xs leading-relaxed mb-4">322 E Gateway Dr, Ste 202<br>Heber, UT 84032</p>
+        <a href="tel:4356541724" class="text-orange text-xs font-medium hover:text-orange-dark transition-colors">(435) 654-1724</a>
+      </div>
+
+      <div class="loc-card bg-ink-soft p-8 reveal reveal-delay-3">
+        <svg class="w-5 h-5 text-orange mb-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <h3 class="text-white font-semibold text-sm mb-3">Fillmore</h3>
+        <p class="text-white/35 text-xs leading-relaxed mb-4">15 E 700 N<br>Fillmore, UT 84631</p>
+        <a href="tel:8019309401" class="text-orange text-xs font-medium hover:text-orange-dark transition-colors">(801) 930-9401</a>
+      </div>
+
+      <div class="loc-card bg-ink-soft p-8 reveal reveal-delay-4">
+        <svg class="w-5 h-5 text-orange mb-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        <h3 class="text-white font-semibold text-sm mb-3">Lehi</h3>
+        <p class="text-white/35 text-xs leading-relaxed mb-4">2183 W Main St, Ste 305<br>Lehi, UT 84043</p>
+        <a href="tel:8019309401" class="text-orange text-xs font-medium hover:text-orange-dark transition-colors">(801) 930-9401</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== TOOLS / PORTALS ===== -->
+<section id="tools" class="bg-stone py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="mb-16 reveal">
+      <p class="label-line text-ink/40 mb-5">Client Portals</p>
+      <h2 class="font-display text-[52px] md:text-[64px] text-ink font-light tracking-[-0.03em] leading-[0.95]">
+        Access your accounts<br><em>anytime, anywhere</em>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+
+      <div class="portal-card bg-white p-10 reveal">
+        <div class="flex items-start justify-between mb-7">
+          <div>
+            <h3 class="font-display text-[28px] text-ink font-semibold">Tax Portal</h3>
+            <p class="text-ink/40 text-xs mt-1 font-medium">Powered by Canopy Tax</p>
+          </div>
+          <div class="w-11 h-11 bg-orange/10 flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25z"/>
+            </svg>
+          </div>
+        </div>
+        <p class="text-ink/50 text-sm leading-[1.75] mb-8">Access your tax documents, sign returns, upload files, and communicate with your tax team — all in one secure portal.</p>
+        <a href="https://secure.canopytax.com/login" target="_blank" rel="noopener noreferrer" class="btn-primary w-full text-center block">Access Tax Portal →</a>
+        <div class="flex gap-3 mt-6">
+          <img src="https://daviesallen.com/wp-content/uploads/2025/01/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the App Store" class="h-8" onerror="this.style.display='none'">
+          <img src="https://daviesallen.com/wp-content/uploads/2025/01/GetItOnGooglePlay_Badge_Web_color_English.png" alt="Get it on Google Play" class="h-8" onerror="this.style.display='none'">
+        </div>
+      </div>
+
+      <div class="portal-card bg-white p-10 reveal reveal-delay-1">
+        <div class="flex items-start justify-between mb-7">
+          <div>
+            <h3 class="font-display text-[28px] text-ink font-semibold">Accounting Portal</h3>
+            <p class="text-ink/40 text-xs mt-1 font-medium">Accounting & Payroll Access</p>
+          </div>
+          <div class="w-11 h-11 bg-orange/10 flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-orange" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/>
+            </svg>
+          </div>
+        </div>
+        <p class="text-ink/50 text-sm leading-[1.75] mb-8">View financials, access payroll records, and stay connected to your bookkeeping activity — in real time, from anywhere.</p>
+        <a href="#" class="btn-primary w-full text-center block">Access Accounting Portal →</a>
+        <div class="flex gap-3 mt-6">
+          <img src="https://daviesallen.com/wp-content/uploads/2025/01/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the App Store" class="h-8" onerror="this.style.display='none'">
+          <img src="https://daviesallen.com/wp-content/uploads/2025/01/GetItOnGooglePlay_Badge_Web_color_English.png" alt="Get it on Google Play" class="h-8" onerror="this.style.display='none'">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Tax Action Plan Banner -->
+    <div class="reveal relative overflow-hidden bg-ink">
+      <div class="absolute inset-0 opacity-[0.08]">
+        <img src="https://daviesallen.com/wp-content/uploads/2017/07/AndyMarshEditedXVI-700x467.jpg" alt="" class="w-full h-full object-cover">
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/40"></div>
+      <div class="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 p-10 md:p-12">
+        <div>
+          <p class="label-line text-white/35 mb-3">Free Resource</p>
+          <h3 class="font-display text-[32px] text-white font-light">2026 Tax Action Plan</h3>
+          <p class="text-white/45 text-sm mt-2">Your roadmap for reducing your tax liability this year.</p>
+        </div>
+        <a href="#" class="btn-primary flex-shrink-0">Download Free →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="bg-ink py-24">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+
+      <!-- Left -->
+      <div class="reveal">
+        <p class="label-line text-white/35 mb-7">Get In Touch</p>
+        <h2 class="font-display text-[52px] md:text-[64px] text-white font-light tracking-[-0.03em] leading-[0.95] mb-8">
+          Ready to build<br>something <em class="text-orange">real?</em>
+        </h2>
+        <p class="text-white/45 leading-[1.8] mb-10 max-w-sm">Every relationship starts with a conversation. Tell us a bit about yourself and we'll connect you with the right partner.</p>
+        <div class="space-y-5">
+          <div class="flex items-center gap-4">
+            <div class="w-9 h-9 bg-orange/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-orange" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+            </div>
+            <div>
+              <p class="text-white/25 text-[10px] font-semibold tracking-widest uppercase mb-0.5">Main Line</p>
+              <a href="tel:8012255854" class="text-white text-sm hover:text-orange transition-colors">(801) 225-5854</a>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-9 h-9 bg-orange/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4 text-orange" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div>
+              <p class="text-white/25 text-[10px] font-semibold tracking-widest uppercase mb-1">Offices</p>
+              <p class="text-white text-sm leading-relaxed">Orem &middot; Murray &middot; Heber City &middot; Fillmore &middot; Lehi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="reveal reveal-delay-2">
+        <form id="contact-form" class="space-y-5">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="form-label">Client Type</label>
+              <select class="form-field"><option value="">Individual, Business, or Both</option><option>Individual</option><option>Business</option><option>Both</option></select>
+            </div>
+            <div>
+              <label class="form-label">Preferred Office</label>
+              <select class="form-field"><option value="">Select Location</option><option>Orem</option><option>Murray (SLC)</option><option>Heber City</option><option>Fillmore</option><option>Lehi</option></select>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="form-label">Name</label>
+              <input type="text" placeholder="Your name" class="form-field">
+            </div>
+            <div>
+              <label class="form-label">Company</label>
+              <input type="text" placeholder="Company (optional)" class="form-field">
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="form-label">Email</label>
+              <input type="email" placeholder="your@email.com" class="form-field">
+            </div>
+            <div>
+              <label class="form-label">Phone</label>
+              <input type="tel" placeholder="(801) 000-0000" class="form-field">
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="form-label">How did you hear about us?</label>
+              <select class="form-field"><option value="">Referral source</option><option>Referral</option><option>Google Search</option><option>Social Media</option><option>Other</option></select>
+            </div>
+            <div>
+              <label class="form-label">Est. Taxable Income</label>
+              <select class="form-field"><option value="">Select range</option><option>Under $100k</option><option>$100k – $250k</option><option>$250k – $500k</option><option>$500k – $1M</option><option>Over $1M</option></select>
+            </div>
+          </div>
+          <div>
+            <label class="form-label">Description of Needs</label>
+            <textarea rows="4" placeholder="What are you looking for help with?" class="form-field resize-none"></textarea>
+          </div>
+          <button type="submit" class="btn-primary w-full text-center">Submit →</button>
+          <p class="text-white/20 text-xs text-center">We respond within one business day.</p>
+        </form>
+
+        <div id="form-success" class="hidden text-center py-16">
+          <div class="w-14 h-14 bg-orange/10 flex items-center justify-center mx-auto mb-6">
+            <svg class="w-7 h-7 text-orange" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/>
+            </svg>
+          </div>
+          <h3 class="font-display text-[32px] text-white font-light mb-3">Message received.</h3>
+          <p class="text-white/40 text-sm">We'll be in touch within one business day.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-ink-mid border-t border-white/[0.07] py-16">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid md:grid-cols-4 gap-12 mb-12">
+
+      <div class="md:col-span-2">
+        <img src="https://daviesallen.com/wp-content/themes/davies/img/logo.svg" alt="Davies + Allen" class="h-6 brightness-0 invert mb-6" onerror="this.parentElement.innerHTML+='<span class=\'font-display text-white text-lg font-light\'>Davies <span class=\'text-orange\'>+</span> Allen</span>'">
+        <p class="text-white/35 text-sm leading-[1.8] max-w-xs">A CPA firm focused on relationships. Five Utah offices, one team, one commitment.</p>
+        <div class="flex gap-3 mt-7">
+          <a href="#" aria-label="Instagram" class="w-8 h-8 border border-white/10 flex items-center justify-center text-white/35 hover:text-orange hover:border-orange transition-colors">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="w-8 h-8 border border-white/10 flex items-center justify-center text-white/35 hover:text-orange hover:border-orange transition-colors">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="w-8 h-8 border border-white/10 flex items-center justify-center text-white/35 hover:text-orange hover:border-orange transition-colors">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" aria-label="X / Twitter" class="w-8 h-8 border border-white/10 flex items-center justify-center text-white/35 hover:text-orange hover:border-orange transition-colors">
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-white text-[10px] font-semibold tracking-widest uppercase mb-6">Quick Links</h4>
+        <ul class="space-y-3">
+          <li><a href="#about" class="text-white/35 text-sm hover:text-orange transition-colors">Who We Are</a></li>
+          <li><a href="#services" class="text-white/35 text-sm hover:text-orange transition-colors">What We Do</a></li>
+          <li><a href="#testimonials" class="text-white/35 text-sm hover:text-orange transition-colors">Testimonials</a></li>
+          <li><a href="#tools" class="text-white/35 text-sm hover:text-orange transition-colors">Client Portals</a></li>
+          <li><a href="#locations" class="text-white/35 text-sm hover:text-orange transition-colors">Locations</a></li>
+          <li><a href="#contact" class="text-white/35 text-sm hover:text-orange transition-colors">Contact Us</a></li>
+          <li><a href="#" class="text-white/35 text-sm hover:text-orange transition-colors">Join Our Team</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white text-[10px] font-semibold tracking-widest uppercase mb-6">Locations</h4>
+        <ul class="space-y-3">
+          <li><a href="tel:8012255854" class="text-white/35 text-sm hover:text-orange transition-colors">Orem: (801) 225-5854</a></li>
+          <li><a href="tel:8019309401" class="text-white/35 text-sm hover:text-orange transition-colors">Murray: (801) 930-9401</a></li>
+          <li><a href="tel:4356541724" class="text-white/35 text-sm hover:text-orange transition-colors">Heber: (435) 654-1724</a></li>
+          <li><a href="tel:8019309401" class="text-white/35 text-sm hover:text-orange transition-colors">Fillmore: (801) 930-9401</a></li>
+          <li><a href="tel:8019309401" class="text-white/35 text-sm hover:text-orange transition-colors">Lehi: (801) 930-9401</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/[0.07] pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <p class="text-white/20 text-xs leading-relaxed max-w-2xl">
+        "Davies Allen" is the brand name for Davies Allen, P.C. (attest services), Davies Allen Tax Advisors, LLC (tax/consulting), and Davies Allen CAAS, LLC. &copy; 2026 Davies Allen. All rights reserved.
+      </p>
+      <a href="#" class="text-white/20 text-xs hover:text-orange transition-colors flex-shrink-0">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ===== JS ===== -->
+<script>
+  // Nav scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  }, { passive: true });
+
+  // Mobile menu
+  const mobileBtn = document.getElementById('mobile-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+  // Hero slideshow
+  const heroBgs = document.querySelectorAll('.hero-bg');
+  const heroDots = document.querySelectorAll('.hero-dot');
+  let heroIdx = 0;
+
+  function goHero(n) {
+    heroBgs[heroIdx].classList.remove('active');
+    heroDots[heroIdx].classList.remove('bg-orange', 'w-7');
+    heroDots[heroIdx].classList.add('bg-white/25', 'w-2.5');
+    heroIdx = n;
+    heroBgs[heroIdx].classList.add('active');
+    heroDots[heroIdx].classList.add('bg-orange', 'w-7');
+    heroDots[heroIdx].classList.remove('bg-white/25', 'w-2.5');
+  }
+
+  heroDots.forEach(d => d.addEventListener('click', () => goHero(+d.dataset.i)));
+  setInterval(() => goHero((heroIdx + 1) % heroBgs.length), 5000);
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // Scroll reveal
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // Counter animation
+  function animateCount(el) {
+    const target = +el.dataset.target;
+    const dur = 1400;
+    const t0 = performance.now();
+    const tick = now => {
+      const p = Math.min((now - t0) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target).toLocaleString();
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+  const countObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCount(e.target); countObs.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter').forEach(el => countObs.observe(el));
+
+  // Testimonials
+  const testiSlides = document.querySelectorAll('.testi-slide');
+  const testiDots = document.querySelectorAll('.testi-dot');
+  let testiIdx = 0;
+
+  function goTesti(n) {
+    testiSlides[testiIdx].classList.remove('active');
+    testiDots[testiIdx].classList.remove('bg-orange');
+    testiDots[testiIdx].classList.add('bg-white/15');
+    testiIdx = n;
+    testiSlides[testiIdx].classList.add('active');
+    testiDots[testiIdx].classList.add('bg-orange');
+    testiDots[testiIdx].classList.remove('bg-white/15');
+  }
+
+  testiDots.forEach(d => d.addEventListener('click', () => goTesti(+d.dataset.i)));
+  setInterval(() => goTesti((testiIdx + 1) % testiSlides.length), 6500);
+
+  // Contact form
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.transition = 'opacity 0.3s';
+    this.style.opacity = '0';
+    setTimeout(() => {
+      this.style.display = 'none';
+      const s = document.getElementById('form-success');
+      s.classList.remove('hidden');
+      requestAnimationFrame(() => { s.style.transition = 'opacity 0.4s'; s.style.opacity = '0'; requestAnimationFrame(() => s.style.opacity = '1'); });
+    }, 320);
+  });
+</script>
+
+</body>
+</html>
